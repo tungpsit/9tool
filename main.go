@@ -50,7 +50,7 @@ func toCamelCase(input string) (string, error) {
 
 	obj = convertToCamelCase(obj)
 
-	output, err := json.Marshal(obj)
+	output, err := json.MarshalIndent(obj, "", "  ")
 	if err != nil {
 		return "", err
 	}
