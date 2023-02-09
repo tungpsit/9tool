@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"strconv"
-	"time"
 
 	"github.com/atotto/clipboard"
 	"github.com/tungpsit/9tool/pkg/datetime"
@@ -61,7 +60,7 @@ func main() {
 
 		if iVal, err := strconv.ParseInt(*iso8601Input, 10, 64); err == nil {
 			output(datetime.ToISO8601String(datetime.ParseUnixTime(iVal)))
-		} else if timeVal, err := time.Parse("Mon Jan 02 2006 15:04:05 GMT-0700 (MST)", *iso8601Input); err == nil {
+		} else if timeVal, err := datetime.ParseJSDate(*iso8601Input); err == nil {
 			output(datetime.ToISO8601String(timeVal))
 		} else {
 			output("Something went wrong!")
