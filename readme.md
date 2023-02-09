@@ -1,2 +1,2 @@
 build
-`go build -o C:\tools\bin\json-tool.exe`
+`go build -o C:\tools\bin\9tool.exe`
