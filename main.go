@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/atotto/clipboard"
 	"github.com/tungpsit/9tool/pkg/datetime"
 	"github.com/tungpsit/9tool/pkg/json"
 )
@@ -21,13 +22,21 @@ const (
 	ColorReset        = "\u001b[0m"
 )
 
+// colorize string
 func colorize(color Color, message string) {
 	fmt.Println(string(color), message, string(ColorReset))
 }
 
+// write string into clipboard
+func writeToClipboard(s string) {
+	clipboard.WriteAll(s)
+}
+
 func output(o string) {
-	colorize(ColorRed, "Output:")
+	colorize(ColorRed, "Output (Copied to clipboard!):")
 	colorize(ColorBlue, o)
+	writeToClipboard(o)
+	colorize(ColorReset, "\nCopied to clipboard!")
 }
 
 func main() {
